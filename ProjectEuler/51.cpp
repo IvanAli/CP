@@ -13,14 +13,6 @@ typedef long long ll;
 bitset<1000005> bs;
 vector<ll> primes;
 
-int gcd(int a, int b) {
-    return b == 0 ? a : gcd(b, a % b);
-}
-
-int lcm(int a, int b) {
-    return a * b / gcd(a, b);
-}
-
 void sieve(ll n) {
     ll sieve_size = n;
     bs.set();
@@ -109,11 +101,6 @@ bool checkMask(ll n, ll mask) {
             }
         }
     }
-    if(n == 11 && mask == 1000) {
-        cout << "checkmask: " << mask_str << ", n: " << n_str << endl;
-        cout << "lens: " << len_n << " " << len_mask << endl;
-        cout << n_str << "... " << mask_str << endl;
-    }
     return true;
 }
 
@@ -150,7 +137,6 @@ int main() {
                 while(get_digit(prime, log10(binary) + 1) == get_digit(primes[i], log10(binary) + 1) && number_length(prime) == prime_len) {
                     prime += binary;
                     if(isPrime(prime)) {
-                        printf("new prime: %lld\n", prime);
                         familyMembers++;
                         if(familyMembers == 8) {
                             if(number_length(prime) == prime_len) {
